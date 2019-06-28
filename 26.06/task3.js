@@ -3,11 +3,18 @@
 */
 
 function isValueExists(value) {
-  return value === null 
-    ? false 
-    : !isNaN(value) 
-    ? !isNaN(value) 
-    : false;
+  let result;
+
+  if (value === null) {
+    result = false;
+  } else if (!isNaN(value)) {
+    result = !isNaN(value);
+  } else {
+    result = false;
+  }
+
+  console.log(result)
+  return result;
 }
 
 // Expected result

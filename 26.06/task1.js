@@ -8,7 +8,9 @@ function getSum() {
   for (var i = 0; i < arguments.length; i++) {
     var elem = arguments[i];
 
-    if (!isNaN(elem)) totalSum += +elem;
+    if (!isNaN(elem)) {
+      totalSum += +elem;
+    }
   }
 
   return totalSum;
