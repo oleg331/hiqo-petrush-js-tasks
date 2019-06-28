@@ -3,9 +3,11 @@
 */
 
 function isValueExists(value) {
-  return value === null ? 
-    false : !isNaN(value) ?
-    !isNaN(value) : false;
+  return value === null 
+    ? false 
+    : !isNaN(value) 
+    ? !isNaN(value) 
+    : false;
 }
 
 // Expected result

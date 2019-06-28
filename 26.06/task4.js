@@ -3,7 +3,7 @@
 */
 
 function getProduct(funct1, funct2) {
-  return doubleValue(getFour());
+  return funct1(funct2());
 }
 
 // Expected result

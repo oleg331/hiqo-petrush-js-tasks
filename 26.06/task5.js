@@ -3,10 +3,12 @@
 */
 
 function getStringLadder(string, func) {
-  if (!string.length) showConsole('Пожалуйста, заполните строку!');
+  if (!string.length) {
+    showConsole('Please, fill the line!');
+  }
 
   while (string.length) {
-    showConsole(string);
+    func(string);
     string = string.slice(0, -1);
   }
 }
@@ -16,4 +18,4 @@ function showConsole(value) {
 }
 
 // Expected result
-getStringLadder("qwerty", consoleLog);
+getStringLadder("qwerty", showConsole);
