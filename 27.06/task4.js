@@ -2,11 +2,10 @@
 	Task 4
 */
 
-function flattenDeep() {
-  let flattenList = arguments[0],
-    resultList = [];
+function flattenDeep(flattenList) {
+  let resultList = [];
 
-  (function flatArray(flattenList) {
+  function flatArray(flattenList) {
     flattenList.forEach(item => {
       if (Array.isArray(item)) {
         flatArray(item);
@@ -14,11 +13,13 @@ function flattenDeep() {
         resultList.push(item);
       }
     });
-  })(flattenList);
+  }
+
+  flatArray(flattenList);
 
   return resultList;
 }
 
 // Expected result
 
-console.log(flattenDeep([1, [2, [3, [4]], 5]])); // => [1, 2, 3, 4, 5]
+flattenDeep([1, [2, [3, [4]], 5]]); // => [1, 2, 3, 4, 5]

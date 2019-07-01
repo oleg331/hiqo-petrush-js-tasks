@@ -2,9 +2,7 @@
 	Task 7
 */
 
-function findUser() {
-    const [users, checkAge] = [...arguments];
-    
+function findUser(users, checkAge) {
     return users.every(checkAge);
 }
 

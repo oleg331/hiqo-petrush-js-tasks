@@ -2,9 +2,7 @@
 	Task 8
 */
 
-function findUser() {
-    const [users, checkAge] = [...arguments];
-
+function findUser(users, checkAge) {
     return users.filter(checkAge);
 }
 
