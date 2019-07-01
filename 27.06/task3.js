@@ -2,17 +2,13 @@
 	Task 3
 */
 
-function findIndex() {
-  let [list, position] = [...arguments],
-    resultIndex = null;
+function findIndex(list, searchItem) {
+  const isFunc = searchItem instanceof Function;
 
-  list.map((elem, i) => {
-    if ((position instanceof Function && position(elem)) || position === i - 1) {
-      resultIndex = i;
-    }
-  });
-
-  return resultIndex;
+  if (isFunc) {
+    console.log(list.find(searchItem).name);
+    // console.log(searchMethod(list));
+  } else console.log(list.indexOf(searchItem));
 }
 
 // Expected result
@@ -27,4 +23,4 @@ const users = [
   { name: 'User3' },
 ];
 
-findIndex(users, user => user.name === "User2"); // => 1
+findIndex(users, user => user.name === 'User2'); // => 1

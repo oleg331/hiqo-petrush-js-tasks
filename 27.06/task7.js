@@ -2,8 +2,8 @@
 	Task 7
 */
 
-function findUser(users, checkAge) {
-    return users.every(checkAge);
+function checkUsers(users, checkAge) {
+  return users.every(checkAge);
 }
 
 // Expected result
@@ -11,23 +11,23 @@ function findUser(users, checkAge) {
 let users = [
   { name: 'User1', age: 22 },
   { name: 'User2', age: 22 },
-  { name: 'User3', age: 23 },
+  { name: 'User3', age: 23 }
 ];
 
-findUser(users, (user) => user.age === 22); // => false
+checkUsers(users, user => user.age === 22); // => false
 
 users = [
   { name: 'User1', age: 22 },
   { name: 'User2', age: 22 },
-  { name: 'User3', age: 22 },
+  { name: 'User3', age: 22 }
 ];
 
-findUser(users, (user) => user.age === 22); // => true
+checkUsers(users, user => user.age === 22); // => true
 
 users = [
   { name: 'User1', age: 22 },
   { name: 'User2', age: 23 },
-  { name: 'User3', age: 20 },
+  { name: 'User3', age: 20 }
 ];
 
-findUser(users, (user) => user.age < 24); // => true
+checkUsers(users, user => user.age < 24); // => true

@@ -3,11 +3,9 @@
 */
 
 function uniq(list) {
-  const listRepeated = list.filter(
-      item => list.indexOf(item) === list.lastIndexOf(item)
-    );
-
-  return listRepeated;
+  return list.filter(
+    item => list.indexOf(item) === list.lastIndexOf(item)
+  );;
 }
 
 // Expected result
