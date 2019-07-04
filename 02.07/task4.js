@@ -5,14 +5,14 @@
 function curry(fn) {
   let args = [];
 
-  function sum(value) {
+  function calculate(value) {
     args.push(value);
 
     if (fn.length == args.length) return fn(...args);
-    return sum;
+    return calculate;
   }
 
-  return sum;
+  return calculate;
 }
 
 // Expected result
