@@ -5,8 +5,8 @@
 function rememberResult(initialValue) {
   let value = initialValue;
 
-  return doubleValue => {
-    value = doubleValue(value);
+  return callback => {
+    value = callback(value);
     return value;
   };
 }
