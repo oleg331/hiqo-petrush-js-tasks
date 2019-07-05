@@ -3,16 +3,12 @@
 */
 
 function curry(fn) {
-  let args = [];
+  const countArgs = fn.length;
 
-  function calculate(value) {
-    args.push(value);
-
-    if (fn.length == args.length) return fn(...args);
-    return calculate;
+  return function calculate() {
+    return (arguments.length < countArgs) ?
+      calculate.bind(this, ...arguments) : fn.call(this, ...arguments);
   }
-
-  return calculate;
 }
 
 // Expected result
@@ -21,6 +17,7 @@ function summ1(a, b, c) {
   return a + b + c;
 }
 
+const shellCurry = curry.bind(summ1);
 const curriedSumm1 = curry(summ1);
 
 console.log(curriedSumm1(1)(2)(3)); // => 6
