@@ -2,14 +2,29 @@
 	Task 4
 */
 
+// Example with bind
 function curry(fn) {
   const countArgs = fn.length;
 
   return function calculate() {
-    return (arguments.length < countArgs) ?
+    return (arguments.length < fn.length) ?
       calculate.bind(this, ...arguments) : fn.call(this, ...arguments);
   }
 }
+
+// Example base
+// function curry(fn) {
+//   let args = [];
+
+//   function sum(value) {
+//     args.push(value);
+
+//     if (fn.length == args.length) return fn(...args);
+//     return sum;
+//   }
+
+//   return sum;
+// }
 
 // Expected result
 
