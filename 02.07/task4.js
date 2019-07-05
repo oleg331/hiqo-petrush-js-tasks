@@ -4,8 +4,6 @@
 
 // Example with bind
 function curry(fn) {
-  const countArgs = fn.length;
-
   return function calculate() {
     return (arguments.length < fn.length) ?
       calculate.bind(this, ...arguments) : fn.call(this, ...arguments);
@@ -32,7 +30,6 @@ function summ1(a, b, c) {
   return a + b + c;
 }
 
-const shellCurry = curry.bind(summ1);
 const curriedSumm1 = curry(summ1);
 
 console.log(curriedSumm1(1)(2)(3)); // => 6
