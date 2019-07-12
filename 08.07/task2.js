@@ -9,6 +9,7 @@ function Collection(Constructor) {
 		const constructor = new Constructor(...arguments);
 		Object.seal(constructor);
 
+		// TODO
 		// Constructor.prototype.toString = function () {
 		// 	const toStringRemastered = this.name + ' instance('
 		// 	return toStringRemastered;
@@ -41,8 +42,9 @@ function Collection(Constructor) {
 
 		this.update = function (modifyItem) {
 			selectedItems.forEach((item, index) => {
-				modifyItem(item, index);
+				modifyItem(item, ++index);
 			});
+			console.log(selectedItems);
 		}
 
 		this.read = function () {
