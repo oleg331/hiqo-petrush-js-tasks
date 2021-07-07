@@ -2,25 +2,19 @@
 	Task 9
 */
 
-function groupBy() {
-    const [words, checkLength] = [...arguments];
-    let wordsObject = {}
+function groupBy(words, predicate) {
+  const wordsObject = words.reduce((item, currentWord) => {
+    let value = predicate(currentWord);
 
-    words.forEach(word => {
-        let wordLength = checkLength(word);
-        
-        wordsObject[wordLength];
+    item[value] = item[value] || [];
+    item[value].push(currentWord);
 
-        if(!wordsObject[wordLength]) {
-            wordsObject[wordLength] = [];
-        }
-        
-        wordsObject[wordLength].push(word)
-    });
+    return item;
+  }, {});
 
-    console.log(wordsObject);
+  return wordsObject;
 }
 
 // Expected result
 
-groupBy(['one', 'two', 'three'], (element) => element.length); // => { '3': ['one', 'two'], '5': ['three'] }
+console.log(groupBy(['one', 'two', 'three'], element => element.length)); // => { '3': ['one', 'two'], '5': ['three'] }

@@ -2,53 +2,63 @@
 	Task 10
 */
 
-function isEqual() {
-    let [value, other] = [...arguments],
-        type = Object.prototype.toString.call(value);
-    
-	if (type !== Object.prototype.toString.call(other)) return false;
-	else if ('[object Object]'.indexOf(type) < 0) return false;
+function isEqual(elemX, elemY) {
+  const keys = Object.keys;
+  const isObj = obj => typeof obj === 'object';
 
-	var compareObjItems = (item1, item2) => {
-		var itemType = Object.prototype.toString.call(item1);
+  const typeX = typeof elemX;
+  const typeY = typeof elemY;
 
-		if ('[object Object]'.indexOf(itemType) >= 0) {
-			if (!isEqual(item1, item2)) return false;
-		} else {
-			if (itemType !== Object.prototype.toString.call(item2)) return false;
-			else if (item1 !== item2) return false;
-		}
-    };
-    
-    for (var key in value) {
-        if (value.hasOwnProperty(key)) {
-            if (compareObjItems(value[key], other[key]) === false) return false;
-        }
-    }
-    
-	return true;
-
+  return isObj(elemX) && typeX === typeY
+    ? keys(elemX).length === keys(elemY).length &&
+        keys(elemX).every(key => isEqual(elemX[key], elemY[key]))
+    : elemX === elemY;
 }
+
+// function isEqual(objX, objY) {
+//   const isObj = obj => typeof obj === "object";
+//   const objectsEquality = (obj1, obj2) => !isObj(obj1) && !isObj(obj2);
+
+//   if (objectsEquality(objX, objY)) return false;
+
+//   var compareObjItems = (objXItem, objYItem) => {
+//     if (isObj(objXItem)) {
+//       if (!isEqual(objXItem, objYItem)) return false;
+//     } else {
+//       if (!objectsEquality(objXItem, objYItem)) return false;
+//       else if (objXItem !== objYItem) return false;
+//     }
+//   };
+
+//   for (var key in objX) {
+//     if (objX.hasOwnProperty(key)) {
+//       if (compareObjItems(objX[key], objY[key]) === false)
+//         return false;
+//     }
+//   }
+
+//   return true;
+// }
 
 // Expected result
 
 const object1 = {
-	a: 1,
-	b: {
-		c: 3,
-		d: {
-			e: 5,
-		}
-	}
+  a: 1,
+  b: {
+    c: 3,
+    d: {
+      e: 5
+    }
+  }
 };
 const object2 = {
-	a: 1,
-	b: {
-		c: 3,
-		d: {
-			e: 5,
-		}
-	}
+  a: 1,
+  b: {
+    c: 3,
+    d: {
+      e: 5
+    }
+  }
 };
 
 isEqual(object1, object2); // => true

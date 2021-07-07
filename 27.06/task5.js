@@ -2,17 +2,16 @@
 	Task 5
 */
 
-function convertArrayToObj() {
-  let arrayOfArrays = arguments[0],
-    resultObject = {};
+function convertArrayToObj(arrayOfArrays) {
+  const resultObj = arrayOfArrays.reduce((acc, currentItem) => {
+    const [propKey, propValue] = currentItem;
+    acc[propKey]= propValue;
+    return acc;    
+  }, {});
 
-  arrayOfArrays.map(item => {
-      resultObject[item[0]] = item[1];
-  })
-
-  console.log(resultObject);
+  return resultObj;
 }
 
 // Expected result
 
-convertArrayToObj([["a", 1], ["b", 2]]); // => { 'a': 1, 'b': 2 }
+convertArrayToObj([['a', 1], ['b', 2]]); // => { 'a': 1, 'b': 2 }
